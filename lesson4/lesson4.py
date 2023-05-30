@@ -1,3 +1,6 @@
+import typing
+
+
 # 1. Напишите функцию для транспонирования матрицы
 def task1():
     m = [
@@ -33,7 +36,19 @@ def transpose_matrix(m: [[int]]) -> [[int]]:
 # где ключ - значение переданного аргумента, а значение - имя аргумента. Если ключ не хешируем,
 # используйте его строковое представление.
 def task2():
-    pass
+    result = convert_to_dict(a='123', b=329, c=23.09, test='test', f=sum)
+    print(f'Результат: {result}')
+
+
+def convert_to_dict(**kwargs) -> {}:
+    d = {}
+    for k, v in kwargs.items():
+        if isinstance(v, typing.Hashable):
+            d[v] = k
+        else:
+            d[str(v)] = k
+
+    return d
 
 
 # 3. Возьмите задачу о банкомате из семинара 2. Разбейте её на отдельные операции - функции.
@@ -42,6 +57,6 @@ def task3():
     pass
 
 
-task1()
+# task1()
 task2()
 task3()
