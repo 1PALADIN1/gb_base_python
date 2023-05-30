@@ -19,8 +19,30 @@ def task2():
 # 3. В большой текстовой строке подсчитать количество встречаемых слов и вернуть 10 самых частых.
 # Не учитывать знаки препинания и регистр символов. За основу возьмите любую статью из википедии
 # или из документации к языку.
+MAX_WORDS = 10
+
+
 def task3():
-    pass
+    d = {}
+    with open('wiki.txt') as f:
+        for line in f:
+            for word in line.split(sep=' '):
+                w = word.lower()
+                for c in ',.:;-—':
+                    w = w.replace(c, '')
+                w = w.strip()
+                if w == '':
+                    continue
+
+                if w not in d:
+                    d[w] = 0
+
+                d[w] += 1
+
+    result = sorted(d.items(), key=lambda x: x[1], reverse=True)[:MAX_WORDS]
+    print('Топ 10 слов статьи:')
+    for i in range(MAX_WORDS):
+        print(f'{i + 1}. {result[i][0]} - {result[i][1]}')
 
 
 # 4. Создайте словарь со списком вещей для похода в качестве ключа и их массой в качестве значения.
@@ -30,6 +52,6 @@ def task4():
     pass
 
 
-task2()
+# task2()
 task3()
 task4()
