@@ -49,9 +49,32 @@ def task3():
 # Определите какие вещи влезут в рюкзак передав его максимальную грузоподъёмность.
 # Достаточно вернуть один допустимый вариант. *Верните все возможные варианты комплектации рюкзака.
 def task4():
-    pass
+    backpack = {
+        'Термос': 6,
+        'Утюг': 7,
+        'Штаны': 2,
+        'Светильник': 5,
+        'Тарелка': 4,
+        'Котелок': 3,
+        'Книга': 5,
+        'Компас': 1,
+    }
+
+    total_weight = sum(backpack.values())
+    max_weight = int(input(f'Введите макс. грузоподъёмность (общий вес: {total_weight})\n'))
+
+    result = []
+    weight = 0
+    for k, v in backpack.items():
+        if weight + v > max_weight:
+            break
+
+        weight += v
+        result.append((k, v))
+
+    print(f'Результат (вес {weight}): {result}')
 
 
-# task2()
+task2()
 task3()
 task4()
