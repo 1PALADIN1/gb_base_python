@@ -59,6 +59,6 @@ def task3():
     bank.start()
 
 
-# task1()
-# task2()
+task1()
+task2()
 task3()
